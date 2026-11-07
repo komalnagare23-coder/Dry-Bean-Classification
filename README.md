@@ -36,7 +36,8 @@ Metrics below are from the BITS lab execution screenshot; precision, recall, F1 
 | Overall winner | **SVM**, based on the highest test accuracy and overall evaluation metrics. |
 
 ## Streamlit application
-The app lets users choose any of the five trained models, upload a CSV with the same 16 feature columns, inspect predictions and confidence values, and download predictions. The comparison table is shown in the app.
+The Streamlit application allows users to select any of the five trained classifiers, upload CSV data, generate predictions, view all six evaluation metrics (Accuracy, AUC, Precision, Recall, F1, and MCC), inspect the classification report and confusion matrix, and download predictions. The application also displays a comparison of all five models.
+
 
 ### Run locally
 ```bash
