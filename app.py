@@ -92,14 +92,14 @@ if uploaded is not None:
                                 "Metric": ["Accuracy", "AUC", "Precision", "Recall", "F1", "MCC"],
                                 "Score": [accuracy, auc, precision, recall, f1, mcc]
                                 }))
-                        st.subheader("Classification Report")
-                        st.text(classification_report(data["Class"], predictions, zero_division=0))
-                        st.subheader("Confusion Matrix")
-                        fig, ax = plt.subplots(figsize=(8, 6))
-                        from sklearn.metrics import ConfusionMatrixDisplay
-                        ConfusionMatrixDisplay.from_predictions(data["Class"], predictions, ax=ax, xticks_rotation=45)
-                        st.pyplot(fig)
-                        plt.close(fig)
+                                st.subheader("Classification Report")
+                                st.text(classification_report(data["Class"], predictions, zero_division=0))
+                                st.subheader("Confusion Matrix")
+                                fig, ax = plt.subplots(figsize=(8, 6))
+                                from sklearn.metrics import ConfusionMatrixDisplay
+                                ConfusionMatrixDisplay.from_predictions(data["Class"], predictions, ax=ax, xticks_rotation=45)
+                                st.pyplot(fig)
+                                plt.close(fig)
                 
                 
     except Exception as exc:
