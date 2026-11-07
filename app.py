@@ -67,6 +67,31 @@ if uploaded is not None:
                 st.dataframe(output, use_container_width=True)
                 st.download_button("Download predictions CSV", output.to_csv(index=False).encode("utf-8"), "dry_bean_predictions.csv", "text/csv")
                 if "Class" in data.columns: 
+                                from sklearn.metrics import (
+                                accuracy_score, roc_auc_score, precision_score,
+                                recall_score, f1_score, matthews_corrcoef
+                                )
+
+                                y_true = data["Class"]
+                                y_pred = predictions
+
+                                accuracy = accuracy_score(y_true, y_pred)
+                                precision = precision_score(y_true, y_pred, average="weighted", zero_division=0)
+                                recall = recall_score(y_true, y_pred, average="weighted", zero_division=0)
+                                f1 = f1_score(y_true, y_pred, average="weighted", zero_division=0)
+                                mcc = matthews_corrcoef(y_true, y_pred)
+                    
+                                from sklearn.preprocessing import label_binarize
+                                classes = model.classes_
+                                y_binary = label_binarize(y_true, classes=classes)
+                                probabilities = model.predict_proba(features)
+                                auc = roc_auc_score(y_binary, probabilities, average="weighted", multi_class="ovr")
+                    
+                                st.subheader("Evaluation Metrics")
+                                st.dataframe(pd.DataFrame({
+                                "Metric": ["Accuracy", "AUC", "Precision", "Recall", "F1", "MCC"],
+                                "Score": [accuracy, auc, precision, recall, f1, mcc]
+                                }))
                         st.subheader("Classification Report")
                         st.text(classification_report(data["Class"], predictions, zero_division=0))
                         st.subheader("Confusion Matrix")
