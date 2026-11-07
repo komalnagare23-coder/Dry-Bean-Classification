@@ -24,7 +24,16 @@ Metrics below are from the BITS lab execution screenshot; precision, recall, F1 
 | SVM | **0.9221** | **0.9937** | **0.9224** | **0.9221** | **0.9222** | **0.9059** |
 
 ## Observations and best model
-**SVM is the best model** by test accuracy (92.21%), AUC (0.9937), F1 (0.9222), and MCC (0.9059). Logistic Regression performs almost as well (92.14% accuracy). KNN also performs strongly, while Gaussian Naive Bayes has the lowest accuracy (76.39%). These observations apply to this single test split.
+
+
+| Model | Performance observation |
+|---|---|
+| Logistic Regression | Achieved 92.14% accuracy and 0.9934 AUC, showing strong classification performance. |
+| Decision Tree | Achieved 89.20% accuracy, performing below Logistic Regression, KNN, and SVM. |
+| KNN | Achieved 91.66% accuracy, with strong F1 and MCC scores. |
+| Naive Bayes | Achieved 76.39% accuracy, the lowest among the five models. |
+| SVM | Achieved the highest accuracy (92.21%), AUC (0.9937), F1 (0.9222), and MCC (0.9059). |
+| Overall winner | **SVM**, based on the highest test accuracy and overall evaluation metrics. |
 
 ## Streamlit application
 The app lets users choose any of the five trained models, upload a CSV with the same 16 feature columns, inspect predictions and confidence values, and download predictions. The comparison table is shown in the app.
