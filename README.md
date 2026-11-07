@@ -41,9 +41,9 @@ streamlit run app.py
 3. In Streamlit Community Cloud, create a new app from that repository and select `app.py` as the main file.
 4. Verify CSV predictions using `test_data.csv`.
 
-## Links (fill in after deployment)
-- **GitHub repository:** ADD_GITHUB_REPOSITORY_URL
-- **Live Streamlit app:** ADD_STREAMLIT_APP_URL
+## Links
+- **GitHub repository:https://github.com/komalnagare23-coder/Dry-Bean-Classification
+- **Live Streamlit app:https://dry-bean-classification-dfqieqj2heawhvlv9cczlp.streamlit.app
 
 ## Evidence
 Include a screenshot showing successful execution in the BITS Virtual Lab in the final assignment PDF.
