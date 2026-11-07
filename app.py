@@ -2,6 +2,8 @@ import streamlit as st
 import pandas as pd
 import joblib
 from pathlib import Path
+from sklearn.metrics import confusion_matrix, classification_report
+import matplotlib.pyplot as plt
 
 st.set_page_config(page_title="Dry Bean Classifier", page_icon="🫘", layout="wide")
 st.title("🫘 Dry Bean Classification")
@@ -64,6 +66,17 @@ if uploaded is not None:
                 st.success(f"Predicted {len(output)} row(s) using {selected}.")
                 st.dataframe(output, use_container_width=True)
                 st.download_button("Download predictions CSV", output.to_csv(index=False).encode("utf-8"), "dry_bean_predictions.csv", "text/csv")
+                if "Class" in data.columns: 
+                        st.subheader("Classification Report")
+                        st.text(classification_report(data["Class"], predictions, zero_division=0))
+                        st.subheader("Confusion Matrix")
+                        fig, ax = plt.subplots(figsize=(8, 6))
+                        from sklearn.metrics import ConfusionMatrixDisplay
+                        ConfusionMatrixDisplay.from_predictions(data["Class"], predictions, ax=ax, xticks_rotation=45)
+                        st.pyplot(fig)
+                        plt.close(fig)
+                
+                
     except Exception as exc:
         st.error(f"Unable to process this CSV: {exc}")
 
